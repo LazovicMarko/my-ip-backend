@@ -17,11 +17,6 @@ public class IpAddressService {
         return this.ipDao.getAllIpAddress();
     }
 
-    public IpAddress getIpAddressById(int id){
-        return this.ipDao.getIpAddressById(id);
-    }
-
-
     public void postIpAddress(String ipAddress) {
         this.ipDao.postIpAddress(ipAddress);
     }

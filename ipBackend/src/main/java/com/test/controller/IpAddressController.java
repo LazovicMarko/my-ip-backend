@@ -8,26 +8,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/ipAddressS")
+@RequestMapping("/addresses")
 public class IpAddressController {
 
     @Autowired
     private IpAddressService ipAddressService;
-
-    @RequestMapping(method = RequestMethod.GET)
+    @Autowired
+    private HttpServletRequest request;
+    @RequestMapping(value = "",method = RequestMethod.GET)
     public Collection<IpAddress> getAllIpAddress(){
         return ipAddressService.getAllIpAddress();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public IpAddress getIpAddressById(@PathVariable("id") int id){
-        return ipAddressService.getIpAddressById(id);
-    }
-    @RequestMapping(value = "/{ip}", method = RequestMethod.POST)
-    public void postIpAddress(@PathVariable("ip") String ipAddress){
-        ipAddressService.postIpAddress(ipAddress);
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public void postIpAddress(){
+        String remoteAddr = "";
+
+        if (request != null) {
+            remoteAddr = request.getHeader("X-FORWARDED-FOR");
+            if (remoteAddr == null || "".equals(remoteAddr)) {
+                remoteAddr = request.getRemoteAddr();
+            }
+        }
+
+        ipAddressService.postIpAddress(remoteAddr);
+
     }
 }

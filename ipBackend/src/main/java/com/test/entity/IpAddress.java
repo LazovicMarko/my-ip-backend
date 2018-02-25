@@ -3,20 +3,11 @@ package com.test.entity;
 public class IpAddress {private int id;
     private String ipAddress;
 
-    public IpAddress(int id, String ipAddress) {
-        this.id = id;
+    public IpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
 
     public IpAddress() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getIpAddress() {

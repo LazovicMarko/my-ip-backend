@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Repository
 public class IpAddressDao {
-    private int lastId;
+    private int lastId=0;
     private static Map<Integer,IpAddress> ipAddressMap;
     static {
         ipAddressMap = new HashMap<Integer, IpAddress>();
@@ -23,12 +23,6 @@ public class IpAddressDao {
         return this.ipAddressMap.get(id);
     }
     public void postIpAddress(String ipAddress){
-
-        if(ipAddressMap.isEmpty()) {
-            lastId = 0;
-        }else {
-            lastId = ipAddressMap.size();
-        }
-        ipAddressMap.put(lastId,new IpAddress(lastId,ipAddress));
+        ipAddressMap.put(lastId++,new IpAddress(ipAddress));
     }
 }
