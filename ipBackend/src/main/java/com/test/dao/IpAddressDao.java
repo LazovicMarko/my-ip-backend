@@ -1,28 +1,32 @@
 package com.test.dao;
 
+import com.test.service.IPAddressValidator;
 import com.test.entity.IpAddress;
+import com.test.repository.IpRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Repository
 public class IpAddressDao {
-    private int lastId=0;
-    private static Map<Integer,IpAddress> ipAddressMap;
-    static {
-        ipAddressMap = new HashMap<Integer, IpAddress>();
-    }
+    @Autowired
+    private IpRepository ipRepository;
+
 
     public Collection<IpAddress> getAllIpAddress(){
-        return this.ipAddressMap.values();
+        return (Collection<IpAddress>) this.ipRepository.findAll();
     }
 
-    public IpAddress getIpAddressById(int id){
-        return this.ipAddressMap.get(id);
-    }
     public void postIpAddress(String ipAddress){
-        ipAddressMap.put(lastId++,new IpAddress(ipAddress));
+        ipRepository.save(new IpAddress(ipAddress));
     }
+
+    public Collection<IpAddress> getAllLocalIpAddress() {
+        return (Collection<IpAddress>) this.ipRepository.findAll();
+    }
+    public void postLocalIpAddress(IpAddress ipAddress) {
+        ipRepository.save(ipAddress);
+    }
+
 }

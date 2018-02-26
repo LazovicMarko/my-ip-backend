@@ -16,8 +16,8 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'gs-spring-boot'
-    version =  '0.1.0'
+    baseName = 'gs-accessing-data-rest'
+    version = '0.1.0'
 }
 
 repositories {
@@ -28,6 +28,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    testCompile("junit:junit")
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("com.h2database:h2")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
