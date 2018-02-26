@@ -31,10 +31,12 @@ public class IpAddressController {
     public void postIpAddress(){
         ipAddressService.postIpAddress(ipAddressService.getIpAddress());
     }
+
     @RequestMapping(value = "/local",method = RequestMethod.GET)
     public Collection<IpAddress> getAllIpAddress(){
         return ipAddressService.getAllLocalIpAddress();
     }
+
     @RequestMapping(value = "/local", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postLocalIpAddress(@RequestBody IpAddress ipAddress) {
         if(validator.validate(ipAddress.getIpAddress())) {
