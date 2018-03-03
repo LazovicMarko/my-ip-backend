@@ -1,8 +1,8 @@
-package com.test.controller;
+package com.controller;
 
-import com.test.entity.IpAddress;
-import com.test.service.IPAddressValidator;
-import com.test.service.IpAddressService;
+import com.entity.IpAddress;
+import com.service.IPAddressValidator;
+import com.service.IpAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;

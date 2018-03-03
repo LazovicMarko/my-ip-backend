@@ -1,8 +1,7 @@
-package com.test.dao;
+package com.dao;
 
-import com.test.service.IPAddressValidator;
-import com.test.entity.IpAddress;
-import com.test.repository.IpRepository;
+import com.entity.IpAddress;
+import com.repository.IpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

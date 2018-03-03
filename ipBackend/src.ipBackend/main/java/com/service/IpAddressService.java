@@ -1,7 +1,7 @@
-package com.test.service;
+package com.service;
 
-import com.test.dao.IpAddressDao;
-import com.test.entity.IpAddress;
+import com.dao.IpAddressDao;
+import com.entity.IpAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
